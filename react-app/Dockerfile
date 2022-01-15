@@ -1,5 +1,5 @@
 # Build stage for compiling the React app
-FROM node:14.8.0-stretch as build
+FROM public.ecr.aws/bitnami/node:14.18.3 as build
 RUN mkdir /app
 COPY . /app
 WORKDIR /app
@@ -8,5 +8,5 @@ RUN npm install \
     && ls -l
 
 # Final stage for creating the final Docker image
-FROM nginx:1.19-alpine as final
+FROM public.ecr.aws/nginx/nginx:1.21-alpine as final
 COPY --from=build /app/build/ /var/www/html
