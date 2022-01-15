@@ -1,6 +1,5 @@
 # Build stage for compiling the React app
 FROM public.ecr.aws/bitnami/node:14.18.3 as build
-RUN mkdir /app
 COPY . /app
 WORKDIR /app
 RUN npm install \
